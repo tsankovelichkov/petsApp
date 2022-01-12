@@ -1,4 +1,6 @@
-import logo from './logo.svg';
+import { Route, Routes } from "react-router-dom"
+
+
 import './App.css';
 
 import Header from './components/Header/Header';
@@ -9,7 +11,10 @@ function App() {
   return (
     <div id="container">
       <Header />
-      <Main />
+      <Routes>
+      <Route path='/categories/:category' element={<Main />} />
+      <Route path='/' exact element={<Main />} />
+      </Routes>
       <Footer />
     </div>
   );

@@ -4,7 +4,6 @@ function Footer() {
             <footer id="site-footer">
                 <p>@PetMyPet</p>
             </footer>
-            <style jsx>{``}</style>
         </>
     );
 }
