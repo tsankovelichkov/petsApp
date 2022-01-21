@@ -1,15 +1,15 @@
-import {Link} from 'react-router-dom'
+import {NavLink,Link} from 'react-router-dom'
 
 function DashboardNavigation() {
     return (
-        <nav class="navbar">
+        <nav className="navbar">
             <ul>
-                <li><Link to="/categories/all">All</Link></li>
-                <li><Link to="/categories/cats">Cats</Link></li>
-                <li><Link to="/categories/dogs">Dogs</Link></li>
-                <li><Link to="/categories/parrots">Parrots</Link></li>
-                <li><Link to="/categories/reptiles">Reptiles</Link></li>
-                <li><Link to="/categories/other">Other</Link></li>
+                <li><NavLink to="/categories/All">All</NavLink></li>
+                <li><NavLink to="/categories/Cat">Cats</NavLink></li>
+                <li><NavLink to="/categories/Dog">Dogs</NavLink></li>
+                <li><NavLink to="/categories/Parrot">Parrots</NavLink></li>
+                <li><NavLink to="/categories/Reptile">Reptiles</NavLink></li>
+                <li><NavLink to="/categories/Other">Other</NavLink></li>
             </ul>
         </nav>
     )
