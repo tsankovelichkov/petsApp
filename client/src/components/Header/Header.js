@@ -1,29 +1,29 @@
 import { Link } from "react-router-dom";
 
-function Header() {
+function Header({user}) {
     return (
         <>
             <header id="site-header">
                 <nav className="navbar">
 
                     <section className="navbar-dashboard">
-                        <div className="first-bar">
+                        {user.isAuth ? (<div className="first-bar">
                             <a href="#">Dashboard</a>
                             <a className="button" href="#">My Pets</a>
                             <a className="button" href="#">Add Pet</a>
-                        </div>
+                        </div>): null}
                         <div className="second-bar">
-                            <ul>
-                                <li>Welcome,!</li>
+                            {user.isAuth ? (<ul>
+                                <li>Welcome,{user.userData}!</li>
                                 <li><Link to="/logout"><i className="fas fa-sign-out-alt"></i> Logout</Link></li>
-                            </ul>
+                            </ul>):null}
                         </div>
                     </section>
                     <section className="navbar-anonymous">
-                        <ul>
+                       {user.isAuth ? null :( <ul>
                             <li><Link to="/register"><i className="fas fa-user-plus"></i> Register</Link></li>
                             <li><Link to="/login"><i className="fas fa-sign-in-alt"></i> Login</Link></li>
-                        </ul>
+                        </ul>)}
                     </section>
                 </nav>
             </header>

@@ -8,7 +8,7 @@ function Logout(){
 
     useEffect(() => {
         firebase.auth().signOut()
-           .then(user => navigate('/'))
+           .then(user => navigate('/categories/All'))
     }, [])
 
     return null

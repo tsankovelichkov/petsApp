@@ -12,12 +12,4 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
-firebase.auth().onAuthStateChanged((user)=>{
-    if(user) {
-        console.log('levski')
-    } else {
-        console.log('sVine')
-    }
-})
-
 export default firebase
