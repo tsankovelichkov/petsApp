@@ -12,6 +12,7 @@ import Details from "./components/Details/Details";
 import Login from "./components/Login/Login";
 import Logout from "./components/Logout/Logout";
 import Register from "./components/Register/Register";
+import AddPet from "./components/AddPet/AddPet";
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/add-pet" element={<AddPet user={appUser}/>} />
       </Routes>
       <Footer />
     </div>

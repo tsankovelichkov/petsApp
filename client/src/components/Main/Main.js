@@ -10,7 +10,7 @@ function Main({ user }) {
     let [pets, setPets] = useState([])
 
     let params = useParams()
-    let navigate=useNavigate()
+    let navigate = useNavigate()
 
     useEffect(() => {
         petService.getAll(params.category)
@@ -33,7 +33,7 @@ function Main({ user }) {
                         <h1>Dashboard</h1>
                         <DashboardNavigation />
                         <ul class="other-pets-list">
-                            {pets.map(x => <PetCard key={x._id} {...x} />)}
+                            {pets.map(x => <PetCard key={x.id} {...x} />)}
                         </ul>
                     </section>)
                     : (<section class="basic">
