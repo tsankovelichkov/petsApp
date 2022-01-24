@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 function MyPetsCard({
     id,
     name,
@@ -6,15 +8,15 @@ function MyPetsCard({
     category,
 }) {
     return (
-        <section class="myPet">
+        <section className="myPet">
             <h3>Name: {name}</h3>
             <p>Category: {category}</p>
-            <p class="img"><img src={imageURL} /></p>
-            <p class="description">{description}</p>
-            <div class="pet-info">
-                <a href="#"><button class="button">Delete</button></a>
-                <a href="#"><button class="button">Edit</button></a>
-                <i class="fas fa-heart"></i> <span>5</span>
+            <p className="img"><img src={imageURL} /></p>
+            <p className="description">{description}</p>
+            <div className="pet-info">
+                <Link to={`/my-pets/${id}/delete`}><button className="button">Delete</button></Link>
+                <Link to={`/my-pets/${id}/edit`}><button className="button">Edit</button></Link>
+                <i className="fas fa-heart"></i> <span>5</span>
             </div>
         </section>
     )

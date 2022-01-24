@@ -15,7 +15,7 @@ function MyPets({user}) {
 
 
     return (
-        <section class="my-pets">
+        <section className="my-pets">
             <h1>My Pets</h1>
             <ul class="my-pets-list">
                {myPetsData?.map(x => <MyPetsCard key={x.id} {...x} />)}

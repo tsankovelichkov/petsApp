@@ -14,6 +14,7 @@ import Logout from "./components/Logout/Logout";
 import Register from "./components/Register/Register";
 import AddPet from "./components/AddPet/AddPet";
 import MyPets from "./components/MyPets/MyPets";
+import Edit from "./components/Edit/Edit";
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/add-pet" element={<AddPet user={appUser}/>} />
         <Route path="/my-pets" element={<MyPets user={appUser}/>} />
+        <Route path='/my-pets/:id/edit' element={<Edit/>} />
       </Routes>
       <Footer />
     </div>
