@@ -10,7 +10,7 @@ function Details() {
     let {id} = useParams()
 
     useEffect(() => {
-        petService.getOne(id)
+        petService.getOne(id,"id")
           .then(res=>setPet(res))
     },[])
 

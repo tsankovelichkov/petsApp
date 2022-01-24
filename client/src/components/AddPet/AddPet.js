@@ -2,22 +2,24 @@ import { useNavigate } from "react-router-dom";
 import * as petService from "../../services/petService";
 
 
-function AddPet({user}) {
+function AddPet({ user }) {
+
     let navigate = useNavigate()
-    function onSubmitAddPetHandler(e){
+
+    function onSubmitAddPetHandler(e) {
         e.preventDefault()
         let name = e.target.name.value
-        let description=e.target.description.value
+        let description = e.target.description.value
         let image = e.target.image.value
-        let category=e.target.category.value
-        let email=user.userData
+        let category = e.target.category.value
+        let email = user.userData
 
-        petService.add(name,description,image,category,email)
-              .then(res=>navigate('/'))
+        petService.add(name, description, image, category, email)
+            .then(res => navigate('/'))
     }
     return (
         <>
-           <section className="create">
+            <section className="create">
                 <form onSubmit={onSubmitAddPetHandler}>
                     <fieldset>
                         <legend>Add new Pet</legend>
@@ -59,7 +61,7 @@ function AddPet({user}) {
                         <input className="button" type="submit" className="submit" value="Add Pet" />
                     </fieldset>
                 </form>
-            </section> 
+            </section>
         </>
     );
 }

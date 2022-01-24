@@ -11,8 +11,9 @@ export const getAll = (pet) => {
 }
 
 
-export const getOne = (id) => {
-    let url = `http://localhost:3000/pets?_id=${id}`
+export const getOne = (id,searchName) => {
+    
+    let url = `http://localhost:3000/pets?${searchName}=${id}`
 
     return fetch(url)
         .then(res => res.json())

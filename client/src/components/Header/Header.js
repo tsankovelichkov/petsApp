@@ -9,7 +9,7 @@ function Header({user}) {
                     <section className="navbar-dashboard">
                         {user.isAuth ? (<div className="first-bar">
                             <a href="#">Dashboard</a>
-                            <Link className="button" to="/my-pet">My Pets</Link>
+                            <Link className="button" to="/my-pets">My Pets</Link>
                             <Link className="button" to="/add-pet">Add Pet</Link>
                         </div>): null}
                         <div className="second-bar">

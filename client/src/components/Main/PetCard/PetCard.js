@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom'
 
 function PetCard(
     {
-        _id,
+        id,
         name,
         description,
         imageURL,
@@ -20,7 +20,7 @@ function PetCard(
                 <p className="description">{description}</p>
                 <div className="pet-info">
                     <a href="#"><button className="button"><i className="fas fa-heart"></i> {category}</button></a>
-                    <Link to={`/pets/details/${_id}`}><button className="button">Details</button></Link>
+                    <Link to={`/pets/details/${id}`}><button className="button">Details</button></Link>
                     <i className="fas fa-heart"></i> <span> {likes}</span>
                 </div>
             </li>
