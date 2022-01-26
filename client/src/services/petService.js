@@ -36,14 +36,14 @@ export const add = (name, description, imageURL, category,email) => {
     })
 }
 
-export const edit = (description,id) => {
+export const edit = (key,value,id) => {
     return fetch(`http://localhost:3000/pets/${id}`, {
         method: 'PATCH',
         headers:{
             "Content-Type":"application/json",
         },
         body: JSON.stringify({
-            description
+            [key]:value
         })
     })
 }

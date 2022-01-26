@@ -20,7 +20,7 @@ function Edit() {
     function onSubmitEditHandler(e) {
         e.preventDefault()
         let description = e.target.description.value
-        petService.edit(description, id)
+        petService.edit('description',description, id)
             .then(res => navigate('/my-pets'))
     }
 

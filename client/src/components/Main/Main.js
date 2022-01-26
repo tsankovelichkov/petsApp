@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams,useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 
 import DashboardNavigation from './DashboardNavigation/DashboardNavigation'
@@ -15,15 +15,16 @@ function Main({ user }) {
     useEffect(() => {
         petService.getAll(params.category)
             .then(res => {
-                if(res.length==0){
+                if (res.length == 0) {
                     navigate('/categories/All')
-                }else{
-                    setPets(res)
+                } else {
+                    let filterArray = res.filter(obj => obj.email != user.userData)
+                    setPets(filterArray)
                 }
             })
     }, [params])
 
-   
+
 
     return (
         <>
@@ -33,7 +34,7 @@ function Main({ user }) {
                         <h1>Dashboard</h1>
                         <DashboardNavigation />
                         <ul class="other-pets-list">
-                            {pets.map(x => <PetCard key={x.id} {...x} />)}
+                            {pets.map(x => <PetCard key={x.id} userEmail={user.userData} {...x} />)}
                         </ul>
                     </section>)
                     : (<section class="basic">
