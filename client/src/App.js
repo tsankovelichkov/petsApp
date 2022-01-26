@@ -15,6 +15,7 @@ import Register from "./components/Register/Register";
 import AddPet from "./components/AddPet/AddPet";
 import MyPets from "./components/MyPets/MyPets";
 import Edit from "./components/Edit/Edit";
+import DeletePet from "./components/DeletePet/DeletePet";
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
         <Route path="/add-pet" element={<AddPet user={appUser}/>} />
         <Route path="/my-pets" element={<MyPets user={appUser}/>} />
         <Route path='/my-pets/:id/edit' element={<Edit/>} />
+        <Route path='/my-pets/:id/delete' element={<DeletePet/>} />
       </Routes>
       <Footer />
     </div>

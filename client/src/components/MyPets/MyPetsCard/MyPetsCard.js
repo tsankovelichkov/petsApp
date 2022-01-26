@@ -7,6 +7,11 @@ function MyPetsCard({
     imageURL,
     category,
 }) {
+
+
+
+
+
     return (
         <section className="myPet">
             <h3>Name: {name}</h3>

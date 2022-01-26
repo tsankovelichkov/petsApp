@@ -47,3 +47,9 @@ export const edit = (description,id) => {
         })
     })
 }
+
+export const deletePet = (id) => {
+    return fetch(`http://localhost:3000/pets/${id}`, {
+        method: 'DELETE',
+    })
+}
