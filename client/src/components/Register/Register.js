@@ -1,9 +1,23 @@
 import firebase from '../../utils/firebase'
 import {useNavigate} from 'react-router-dom'
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Register() {
 
     let navigate = useNavigate()
+
+    const notify = () => {
+        toast.error("There is an a account with this email", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+    }
 
     function onSubmitRegisterHandler(e){
         e.preventDefault()
@@ -11,12 +25,14 @@ function Register() {
         let password = e.target.password.value
         firebase.auth().createUserWithEmailAndPassword(email,password)
            .then(data => navigate('/categories/All'))
+           .catch(err=>notify())
     }
 
     return (
         <>
         <section className="register" onSubmit={onSubmitRegisterHandler}>
                 <form >
+                    <ToastContainer />
                     <fieldset>
                         <legend>Register</legend>
                         <p className="field">

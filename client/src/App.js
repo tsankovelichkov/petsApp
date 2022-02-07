@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom"
 import firebase from "../src/utils/firebase";
+import AuthContext from "./contexts/Authcontext";
 
 
 import './App.css';
@@ -43,20 +44,22 @@ function App() {
 
   return (
     <div id="container">
+      <AuthContext.Provider value={appUser}>
       <Header user={appUser} />
       <Routes>
-        <Route path="/" element={<Main user={appUser} />} />
-        <Route path="/categories/:category" element={<Main user={appUser} />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/categories/:category" element={<Main />} />
         <Route path="/pets/details/:id" element={<Details />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/add-pet" element={<AddPet user={appUser}/>} />
-        <Route path="/my-pets" element={<MyPets user={appUser}/>} />
+        <Route path="/add-pet" element={<AddPet/>} />
+        <Route path="/my-pets" element={<MyPets/>} />
         <Route path='/my-pets/:id/edit' element={<Edit/>} />
         <Route path='/my-pets/:id/delete' element={<DeletePet/>} />
       </Routes>
       <Footer />
+      </AuthContext.Provider>
     </div>
   );
 }

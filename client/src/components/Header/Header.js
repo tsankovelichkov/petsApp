@@ -1,26 +1,31 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../../contexts/Authcontext";
 
-function Header({user}) {
+function Header() {
+
+    let {isAuth,userData} = useContext(AuthContext)
+
     return (
         <>
             <header id="site-header">
                 <nav className="navbar">
 
                     <section className="navbar-dashboard">
-                        {user.isAuth ? (<div className="first-bar">
+                        {isAuth ? (<div className="first-bar">
                             <a href="#">Dashboard</a>
                             <Link className="button" to="/my-pets">My Pets</Link>
                             <Link className="button" to="/add-pet">Add Pet</Link>
                         </div>): null}
                         <div className="second-bar">
-                            {user.isAuth ? (<ul>
-                                <li>Welcome,{user.userData}!</li>
+                            {isAuth ? (<ul>
+                                <li>Welcome,{userData}!</li>
                                 <li><Link to="/logout"><i className="fas fa-sign-out-alt"></i> Logout</Link></li>
                             </ul>):null}
                         </div>
                     </section>
                     <section className="navbar-anonymous">
-                       {user.isAuth ? null :( <ul>
+                       {isAuth ? null :( <ul>
                             <li><Link to="/register"><i className="fas fa-user-plus"></i> Register</Link></li>
                             <li><Link to="/login"><i className="fas fa-sign-in-alt"></i> Login</Link></li>
                         </ul>)}

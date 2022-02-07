@@ -1,10 +1,14 @@
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import * as petService from "../../services/petService";
+import AuthContext from "../../contexts/Authcontext";
 
 
-function AddPet({ user }) {
+function AddPet() {
 
     let navigate = useNavigate()
+
+    let {isAuth,userData} = useContext(AuthContext)
 
     function onSubmitAddPetHandler(e) {
         e.preventDefault()
@@ -12,7 +16,7 @@ function AddPet({ user }) {
         let description = e.target.description.value
         let image = e.target.image.value
         let category = e.target.category.value
-        let email = user.userData
+        let email = userData
 
         petService.add(name, description, image, category, email)
             .then(res => navigate('/'))

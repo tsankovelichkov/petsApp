@@ -1,18 +1,34 @@
 import firebase from "../../utils/firebase";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function Login() {
 
     let navigate = useNavigate()
 
+    const notify = () => {
+        toast.error("You're email or password is invalid!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+    }
+
     function onLoginSubmitHandler(e) {
         e.preventDefault()
         let email = e.target.email.value
         let password = e.target.password.value
 
-        firebase.auth().signInWithEmailAndPassword(email,password)
-              .then(user => navigate('/'))
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(user => navigate('/'))
+            .catch(err => notify())
 
     }
 
@@ -20,6 +36,7 @@ function Login() {
         <>
             <section className="login">
                 <form onSubmit={onLoginSubmitHandler}>
+                    <ToastContainer />
                     <fieldset>
                         <legend>Login</legend>
                         <p className="field">

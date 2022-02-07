@@ -1,13 +1,16 @@
-import { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect,useContext } from 'react'
+import { useParams, useNavigate} from 'react-router-dom';
+import AuthContext from "../../contexts/Authcontext";
 
 
 import DashboardNavigation from './DashboardNavigation/DashboardNavigation'
 import * as petService from "../../services/petService";
 import PetCard from './PetCard/PetCard';
 
-function Main({ user }) {
+function Main() {
     let [pets, setPets] = useState([])
+
+    let {isAuth,userData} = useContext(AuthContext)
 
     let params = useParams()
     let navigate = useNavigate()
@@ -18,7 +21,7 @@ function Main({ user }) {
                 if (res.length == 0) {
                     navigate('/categories/All')
                 } else {
-                    let filterArray = res.filter(obj => obj.email != user.userData)
+                    let filterArray = res.filter(obj => obj.email != userData)
                     setPets(filterArray)
                 }
             })
@@ -29,12 +32,12 @@ function Main({ user }) {
     return (
         <>
             <main id="site-content">
-                {user.isAuth
+                {isAuth
                     ? (<section className="dashboard">
                         <h1>Dashboard</h1>
                         <DashboardNavigation />
                         <ul class="other-pets-list">
-                            {pets.map(x => <PetCard key={x.id} userEmail={user.userData} {...x} />)}
+                            {pets.map(x => <PetCard key={x.id} userEmail={userData} {...x} />)}
                         </ul>
                     </section>)
                     : (<section class="basic">

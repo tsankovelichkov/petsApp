@@ -1,14 +1,17 @@
-import {useEffect,useState} from "react"
+import {useEffect,useState,useContext} from "react"
 import * as petService from "../../services/petService";
 import MyPetsCard from "./MyPetsCard/MyPetsCard";
+import AuthContext from "../../contexts/Authcontext";
 
 
-function MyPets({user}) {
+function MyPets() {
 
     const [myPetsData,setMyPetsData] = useState([])
 
+    let {isAuth,userData} = useContext(AuthContext)
+
     useEffect(() => {
-        petService.getOne(user.userData,'email')
+        petService.getOne(userData,'email')
            .then(res=>setMyPetsData(res))
     }, []);
 
